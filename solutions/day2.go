@@ -25,6 +25,29 @@ func Day2Part1() {
 	fmt.Println("Day 2, Part 1 Answer:", horizontal*depth)
 }
 
+func Day2Part2() {
+	mvs := readMovement("day2.txt")
+
+	var (
+		depth      int
+		horizontal int
+		aim        int
+	)
+	for _, mv := range mvs {
+		switch mv.dir {
+		case "up":
+			aim -= mv.value
+		case "down":
+			aim += mv.value
+		case "forward":
+			horizontal += mv.value
+			depth += aim * mv.value
+		}
+	}
+
+	fmt.Println("Day 2, Part 1 Answer:", horizontal*depth)
+}
+
 type Movement struct {
 	dir   string
 	value int
